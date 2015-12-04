@@ -578,10 +578,12 @@ export function main() {
            inject(
                [TestComponentBuilder, AsyncTestCompleter],
                (tcb: TestComponentBuilder, async) => {
-                   tcb.overrideView(MyComp, new ViewMetadata({
-                                      template: '<p><child-cmp var-alice/><child-cmp var-bob/></p>',
-                                      directives: [ChildComp]
-                                    }))
+                   tcb.overrideView(
+                          MyComp, new ViewMetadata({
+                            template:
+                                '<p><child-cmp var-alice></child-cmp><child-cmp var-bob></child-cmp></p>',
+                            directives: [ChildComp]
+                          }))
 
                        .createAsync(MyComp)
                        .then((fixture) => {
@@ -1007,7 +1009,7 @@ export function main() {
              tcb.overrideView(
                     MyComp, new ViewMetadata({
                       template:
-                          '<input type="checkbox" listenerprevent></input><input type="checkbox" listenernoprevent></input>',
+                          '<input type="checkbox" listenerprevent><input type="checkbox" listenernoprevent>',
                       directives: [
                         DirectiveListeningDomEventPrevent,
                         DirectiveListeningDomEventNoPrevent
